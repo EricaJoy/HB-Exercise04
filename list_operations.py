@@ -121,40 +121,67 @@ def custom_append(input_list, value):
 
 def custom_extend(input_list, values):
     """custom_extend(input_list, values) imitates input_list.extend(values)"""
-    pass
+    input_list[:] = input_list + values
+    
 
 def custom_insert(input_list, index, value):
     """custom_insert(input_list, index, value) imitates
     input_list.insert(index, value)
     """
-    pass
+    input_list[:] = input_list[:index] + [value] + input_list[index:]
 
 def custom_remove(input_list, value):
     """custom_remove(input_list, value) imitates input_list.remove(value)"""
-    pass
+    x = 0
+    for i in input_list:
+        if input_list[x] == value:
+            input_list[:] = input_list[:x] + input_list[x+1:]
+            break
+        x += 1
 
 def custom_pop(input_list):
     """custom_pop(input_list) imitates input_list.pop()"""
-    pass
+    x = input_list[-1] 
+    input_list[:] = input_list[:-1]
+    return x
 
 def custom_index(input_list, value):
     """custom_index(input_list, value) imitates input_list.index(value)"""
-    pass
+    x = 0
+    for i in input_list:
+        if input_list[x] == value:
+            return x
+        x += 1    
 
 def custom_count(input_list, value):
     """custom_count(input_list, value) imitates input_list.count(value)"""
-    pass
+    x = 0
+    y = 0
+    for i in input_list:
+        if input_list[x] == value:
+            y += 1
+        x += 1    
+    return y
 
 def custom_reverse(input_list):
     """custom_reverse(input_list) imitates input_list.reverse()"""
-    pass
+    input_list[:] = input_list[::-1]
 
 def custom_contains(input_list, value):
     """custom_contains(input_list, value) imitates (value in input_list)"""
-    pass
-
+    x = 0
+    for i in input_list:
+        if input_list[x] == value:
+            return True
+        x += 1
+    return False
+        
 def custom_equality(some_list, another_list):
     """custom_equality(some_list, another_list) imitates
     (some_list == another_list)
     """
-    pass
+    if some_list[:] == another_list[:]:
+        return True
+    else:
+        return False
+    
